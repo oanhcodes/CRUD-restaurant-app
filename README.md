@@ -1,2 +1,2 @@
-# restaurant_crud_app
+CRUD-restaurant-app
 Restaurant review website built with Sinatra
