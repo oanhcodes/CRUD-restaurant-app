@@ -1,0 +1,35 @@
+  <!-- Restaurant Index Page -->
+  <div class="error-messages">
+    <ul>
+      <% if @errors %>
+        <% @errors.each do |error| %>
+        <li><%= error %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="post-container">
+  <% @restaurants.each do |restaurant| %>
+    <div class="box2">
+      <h3><a href="/restaurants/<%=restaurant.id%>"><%=restaurant.name%></a></h3>
+      <p><%="#{restaurant.city}, #{restaurant.state}"%></p>
+      <% if current_user %>
+        <%if current_user.id == restaurant.creator_id%>
+          <p><a href="/restaurants/<%= restaurant.id %>/edit">Edit</a></p>
+          <form method="post" action="/restaurants/<%= restaurant.id %>">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Delete Restaurant">
+          </form>
+        <% end %>
+      <% end %>
+      </div>
+  <% end %>
+  </div>
+
+    <% if current_user %>
+    <a href="/restaurants/new">Add a restaurant</a>
+    <% end %>
+
+
+

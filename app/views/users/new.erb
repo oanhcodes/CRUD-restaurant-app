@@ -1,0 +1,21 @@
+<!-- Registration Page -->
+  <div class="error-messages">
+    <ul>
+      <% if @errors %>
+        <% @errors.each do |error| %>
+        <li><%= error %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div>
+    <h1>Join Today</h1>
+      <form method="post" action="/users" class="login-form">
+        <label for="email">Email:</label><br>
+        <input type="text" name="user[email]"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" name="user[password]"><br>
+        <input type="submit" value="Create Account">
+      </form>
+  </div>

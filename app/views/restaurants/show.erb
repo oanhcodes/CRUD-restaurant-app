@@ -1,0 +1,42 @@
+  <!-- Restaurant Show Page -->
+<div class="restaurant-container">
+  <div class="error-messages">
+    <ul>
+      <% if @errors %>
+        <% @errors.each do |error| %>
+        <li><%= error %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div>
+    <h1><%=@restaurant.name%></h1>
+    <p>Cuisine: <%=@restaurant.cuisine%></p>
+    <p>Location: <%="#{@restaurant.address}, #{@restaurant.city}, #{@restaurant.state} #{@restaurant.zipcode}" %></p>
+          <% if current_user %>
+            <% if current_user.reviews.find_by(restaurant_id: @restaurant.id).nil? %>
+              <form method="post" action="/restaurants/<%= @restaurant.id %>/reviews">
+                <label for="rating">Rating: 1-5</label>
+                <input type="text" name="rating"><br>
+                <label for="body">Body:</label>
+                <input type="text" name="body"><br>
+                <input type="submit" value="Submit Review">
+              </form>
+            <% end %>
+          <% else %>
+            <p><a href="/login/new">Login to Add Review</a></p>
+          <% end %>
+    <div>
+
+    <div>
+      <% if @reviews != nil %>
+        <% @reviews.each do |review| %>
+          <div class="review-box">
+            <p>Rating: <%=review.rating%></p>
+            <p>Rating: <%=review.body%></p>
+          </div>
+        <% end %>
+      <% end %>
+    <div>
+  </div>

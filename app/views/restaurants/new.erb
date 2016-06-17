@@ -1,0 +1,29 @@
+<!-- New Restaurant Page -->
+  <div class="error-messages">
+    <ul>
+      <% if @errors %>
+        <% @errors.each do |error| %>
+        <li><%= error %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div>
+    <p class = "login-header">Create Restaurant</p>
+    <form method="post" action="/restaurants" class="login-form">
+      <label for="name">Name:</label>
+      <input type="text" name="restaurant[name]"><br>
+      <label for="cuisine">Cuisine:</label>
+      <input type="text" name="restaurant[cuisine]"><br>
+      <label for="address">Address:</label>
+      <input type="text" name="restaurant[address]"><br>
+      <label for="city">City:</label>
+      <input type="text" name="restaurant[city]"><br>
+      <label for="state">State:</label>
+      <input type="text" name="restaurant[state]"><br>
+      <label for="zipcode">Zipcode:</label>
+      <input type="text" name="restaurant[zipcode]"><br>
+      <input type="submit" value="Create Restaurant">
+    </form>
+  <div>
